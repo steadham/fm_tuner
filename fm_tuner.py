@@ -9,9 +9,9 @@ if len(sys.argv) != 2:
 print('Argument List:', str(sys.argv))
 freq = sys.argv[1]
 print('Tuning to:', freq)
-p1 = Popen(['sudo rtl_fm', '-f ' + str(freq) + 'e6', '-s 200k', '-r 48000'], stdout=PIPE)
+p1 = Popen(['rtl_fm', '-f ' + str(freq) + 'e6', '-s 200k', '-r 48000'], stdout=PIPE)
 print('p1 constructed')
-p2 = Popen(['sudo aplay', '-r 48000', '-f S16_LE'], stdin=p1.stdout)
+p2 = Popen(['aplay', '-r 48000', '-f S16_LE'], stdin=p1.stdout)
 print('p2 constructed')
 (output, err) = p2.communicate()
 print(output, err)
